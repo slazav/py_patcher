@@ -1,5 +1,7 @@
 ### py_patcher - patcher for binary files
 
+This is a python version of `FirmwarePatcher` (without actual patches).
+
 The original AlexWhiter's `FirmwarePatcher` can patch Garmin firmware to
 remove jnx map restrictions. It's a windows program without source code.
 
@@ -47,7 +49,7 @@ With `-no_cs` option control sum is not calculated, tested or updated.
 With `-force` option the patch will be applied even if the control sum
 of the original file is incorrect.
 
-### some useful tricks with etrex 22x
+### some useful tricks for etrex 22x (could be useful for other models)
 
 Broken jnx map can prevent device from booting and connecting via usb.
 It's better to put strange jnx maps on external sd card (it can be removed).
