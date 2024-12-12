@@ -18,8 +18,11 @@ parser = argparse.ArgumentParser(
   +' There is no guarantee that patched file will work.',
   epilog='slazav, 12.2024')
 
+parser.add_argument('-F', '--patt_file', action='store',
+  metavar='patt_file', help='file with search/replace patterns')
+
 parser.add_argument('-p', '--pattern', action='store',
-  metavar='name', help='use only specified pattern')
+  metavar='patt_name', help='use only specified pattern')
 
 parser.add_argument('-f', '--force', action='store_true',
   help='proceed if unable to calculate or find checksum of original file')
@@ -27,11 +30,42 @@ parser.add_argument('-f', '--force', action='store_true',
 parser.add_argument('-n', '--nocs', action='store_true',
   help='check and update garmin-specific checksum')
 
-parser.add_argument('patt_file', help='file with search/replace patterns')
-parser.add_argument('in_file',  nargs='?', default='', help='search patterns in this file')
+parser.add_argument('in_file', default='', help='search patterns in this file')
 parser.add_argument('out_file', nargs='?', default='', help='if provided patch')
 
 args = parser.parse_args()
+
+##################################################
+## Read binary file and convert it to HEX
+
+if not args.in_file: exit(0)
+
+print('## Reading file:', args.in_file)
+with open(args.in_file, mode="rb") as f:
+  data_bin=f.read()
+  data=data_bin.hex(' ')
+
+##################################################
+# calculate and verify checksum
+
+# the function will be used later for setting checksum
+CS_POS=10
+CS_OFF=1
+def calc_cs(data):
+  cs=CS_OFF
+  N=len(data)
+  for i in range(N):
+    if i!=N-CS_POS: cs = (cs + data[i]) & 0xFF
+  return 0xFF-cs
+
+if not args.nocs:
+  cs  = calc_cs(data_bin)
+  cs0 = data_bin[len(data_bin)-CS_POS]
+  if cs != cs0:
+    print("checksum is WRONG:", cs, cs0)
+    if not args.force: exit(1)
+  else:
+    print("checksum is OK")
 
 ##################################################
 ## Read pattern file
@@ -41,6 +75,9 @@ args = parser.parse_args()
 # <key>=<value> line in these sections and put into patt dictionary
 # with <key> taken from file. Keys for search and replace patters
 # should match.
+
+print(">>>", args.patt_file)
+if not args.patt_file: exit(0)
 
 import re
 patt = {}
@@ -76,37 +113,6 @@ if args.pattern and args.pattern not in patt:
   print(args.pattern, ': pattern not found')
   exit(1)
 
-##################################################
-## Read binary file and convert it to HEX
-
-if not args.in_file: exit(0)
-
-print('## Reading file:', args.in_file)
-with open(args.in_file, mode="rb") as f:
-  data_bin=f.read()
-  data=data_bin.hex(' ')
-
-##################################################
-# calculate and verify checksum
-
-# the function will be used later for setting checksum
-CS_POS=10
-CS_OFF=1
-def calc_cs(data):
-  cs=CS_OFF
-  N=len(data)
-  for i in range(N):
-    if i!=N-CS_POS: cs = (cs + data[i]) & 0xFF
-  return 0xFF-cs
-
-if not args.nocs:
-  cs  = calc_cs(data_bin)
-  cs0 = data_bin[len(data_bin)-CS_POS]
-  if cs != cs0:
-    print("checksum is WRONG:", cs, cs0)
-    if not args.force: exit(1)
-  else:
-    print("checksum is OK")
 
 ##################################################
 ## Search every pattern in the data.
