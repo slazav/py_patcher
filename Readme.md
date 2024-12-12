@@ -1,6 +1,6 @@
 ### py_patcher - patcher for binary files
 
-This is a python version of `FirmwarePatcher` (without actual patches).
+This is a python version of `FirmwarePatcher`.
 
 The original AlexWhiter's `FirmwarePatcher` can patch Garmin firmware to
 remove jnx map restrictions. It's a windows program without source code.
@@ -9,18 +9,19 @@ It does a few things:
 
 - Apply a patch itself. Patches are written as standard regular expressions
 for data in hex representation and can be easily extracted from the program
-code (something like windows ini file is needed).
+code (something like windows ini file is needed). An additional file defs.txt
+is available, with fixed patch for Garmin 66.
 
 - Increase firmware version (optional). This may be needed because
 update is only possible to a higher version.
 
-- Change firmware name (optional).
+- Change firmware about page (optional).
 
 - Update file checksum.
 
 The `py_patcher` script can only apply patch and update checksum. The
 patch is applied by using standard python re module. The checksum is
-calculated correctly for a few original firmware files and a few patch
+calculated correctly for most tested original firmware files and all patch
 variants produced by FirmwarePatcher, but I'm still not sure about
 this calculation. Version increase is not implemented, it requires not
 trivial modifications in different parts of the file.
@@ -56,7 +57,7 @@ Colorado_WebUpdater__370            OK  +  Base01   +
 D2Charlie_610                       OK  +  Added09  +
 DakotaTWN_WebupdaterGCDfile__210    OK  -  -
 Dakota_WebUpdater__580              OK  -  Base03   +
-DriveSmart61_680               WRONG(!) +  -
+DriveSmart61_680               WRONG(!) +  Base20
 Edge510_610                         OK  +  Base07   +
 Edge605_705_330                     OK  -  -
 Edge800_270                         OK  +  Base03   +
@@ -88,6 +89,9 @@ PN -- patch name which matches the file
 PN -- patch name detected by patcher.py
 CMP -- compare patched files produced by FirmwarePatcher.exe
       (no name and version change) and patcher.py
+
+(!) -- File contains extra 261 bytes at the end. FirmwarePatcher
+detects and removes them, patcher.py can't.
 ```
 
 ### some useful tricks for etrex 22x (could be useful for other models)
