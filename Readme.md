@@ -25,29 +25,70 @@ variants produced by FirmwarePatcher, but I'm still not sure about
 this calculation. Version increase is not implemented, it requires not
 trivial modifications in different parts of the file.
 
-At the moment I do not think that this script is any better then
-`FirmwarePatcher`. It works with exactly same patches, it can not
+At the moment I do not think that this script is any better and safer
+then `FirmwarePatcher`. It works with exactly same patches, it can not
 increase version, it was written without deep understanding of firmware
 structure. Obviously, there is no guarantee that patches will work.
-With this script I was able to produce a valid patch for my etrex 22x.
 
-### script usage
+### Script usage
 
 ```
-py_patcher [-p <name>] [-no_cs] [-force] <patch file> <in file> [<out_file>]
+py_patcher [-F <patch_file> ] [-p <patch_name>] [--no_cs] [--force] <in file> [<out_file>]
 ```
 
-Patch file is a "windows ini" file with patches. If only `<patch file>`
-and `<in file>` arguments are given than all patches are listed and
-tested with the input file. If `<out_file>` is given the result of the
-last successful patch will be written there.
+Script reads `<in file>` and verifies checksum (unless `--no_cs` is given).
+If checksum verivication fails the script stops (unless `--force` option is given).
+If `-F <patch_file>` option is given then patches are read and applied to the data.
+With `-p <patch_name>` option one can select a specific patch.
+If `<out_file>` is given and at least one patch can be applied then result is
+written to the file.
 
-With `-p` option one can select a specific patch name.
+### Test on a few gcd files
 
-With `-no_cs` option control sum is not calculated, tested or updated.
+```
+name                                CS  P1 PN       CMP
+-------------------------------------------------------
+Alpha100_860                        OK  +  Base15   +
+Astro320_460                        OK  +  Base15   +
+Atemos100_330                       OK  +  Base15   +
+ColoradoTWN_WebupdaterGCDfile__330  OK  -  -
+Colorado_WebUpdater__370            OK  +  Base01   +
+D2Charlie_610                       OK  +  Added09  +
+DakotaTWN_WebupdaterGCDfile__210    OK  -  -
+Dakota_WebUpdater__580              OK  -  Base03   +
+DriveSmart61_680               WRONG(!) +  -
+Edge510_610                         OK  +  Base07   +
+Edge605_705_330                     OK  -  -
+Edge800_270                         OK  +  Base03   +
+Edge810_630                         OK  +  Base07   +
+Edge830_500                         OK  -  -
+EpixSystem_WebUpdater__360          OK  +  Base18   +
+eTrex20_30_Webupdater__490          OK  +  Base15   +
+eTrex20x_30x_Webupdater__300        OK  +  Base15   +
+eTrex22x_32x_Webupdater__270        OK  +  Base15   +
+GPSMAP276cx_580                     OK  +  Base16   +
+GPSMAP62_78_730                     OK  +  Base14   +
+GPSMAP62sc_62stc_WebUpdater__530    OK  +  Base15   +
+GPSMAP64sx_WebUpdater__310          OK  +  Base16   +
+GPSMAP64_WebUpdater__660            OK  +  Base16   +
+GPSMAP66_WebUpdater__960            OK  +  - (!!)
+Montana610_680_350                  OK  +  Base15   +
+Montana_WebUpdater__760             OK  +  Base15   +
+NordicRino650_WebUpdater__270       OK  +  Base05   +
+Oregon6x0_WebUpdater__560           OK  +  Base16   +
+Oregon7xx_WebUpdater__600           OK  +  Base21   +
+Oregonx50_WebUpdater__660           OK  +  Base08   +
+Rino700_WebUpdater__250             OK  -  -
+Rino7xxGMRS_WebUpdater__510         OK  +  Base16   +
+Rino7xx_WebUpdater__510             OK  +  Base16   +
 
-With `-force` option the patch will be applied even if the control sum
-of the original file is incorrect.
+CS -- checksum calculation with patcher.py in the original file
+P1 -- patchable with original FirmwarePatcher.exe
+PN -- patch name which matches the file
+PN -- patch name detected by patcher.py
+CMP -- compare pathed files produced by FirmwarePatcher.exe
+      (no name and version change) and patcher.py
+```
 
 ### some useful tricks for etrex 22x (could be useful for other models)
 
@@ -69,5 +110,6 @@ this does not work for me.
 
 An important firmware patching instructions and links (in RU):
 https://docs.nakarte.me/garmin.html
+
 
 #### slazav, 12.2024
