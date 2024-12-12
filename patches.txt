@@ -1,0 +1,311 @@
+; extracted from FirmwarePatcher.exe
+
+[HWIDs]
+1525=Oregon x50 CHN (Chinese edition)
+1532=GPSMAP 62sc CHN (Chinese edition)
+1533=GPSMAP 62sc JPN (Japanese edition)
+1536=Oregon 550tc JPN (Japanese edition)
+1556=eTrex 20/30 CHN (Chinese edition)
+1561=Edge 510
+1562=Alpha 100
+1567=Edge 810
+1587=Rino 6xx CHN (Chinese edition)
+1594=eTrex 20/30 TWN (Taiwan edition)
+1599=GPSMAP 62stc TWN (Taiwan edition)
+1635=Montana 650t CHN (Chinese edition)
+1651=Oregon 6x0
+1719=GPSMAP 62sc SEA (South East Asia edition)
+1721=Edge 810 JPN (Japanese edition)
+1736=Edge Touring
+1741=eTrex 20S SG
+1742=Edge 510 JPN (Japanese edition)
+1820=eTrex 209/309 China
+1821=Edge 510 CHN (Chinese edition)
+1822=Edge 810 CHN (Chinese edition)
+1823=Edge 810 TWN (Taiwan edition)
+1836=Edge 1000
+1843=Oregon 6xx SEA (South East Asia edition)
+1857=Oregon 6xx JPN (Japanese edition)
+1859=GPSMAP 64
+1876=Rino 6xx KOR (Korean edition)
+1918=Edge 510 KOR (Korean edition)
+1988=Epix System
+2052=Edge 1000 TWN (Taiwan edition)
+2053=Edge 1000 JPN (Japanese edition)
+2067=Edge 520
+2070=Edge 1000 CHN (Chinese edition)
+2100=Edge 1000 KOR (Korean edition)
+2123=GPSMAP 64S SEA (South East Asia edition)
+2124=GPSMAP 64SJ JPN (Japanese edition)
+2140=eTrex Touch 25/35
+2204=Edge Explore 1000
+2231=Oregon 650TCJ2 JPN (Japanese edition)
+2250=eTrex 20x/30x
+2260=Edge 520 Asia
+2261=Edge 520 Japan
+2267=Drive and DriveSmart 40/50
+2268=Drive, DriveSmart 60/70, and DriveTrack 70
+2269=DriveLuxe 50
+2270=DriveAssist 50
+2274=Edge 1000 Thai
+2281=GPSMAP 64s KOR
+2285=GPSMAP 64st TWN
+2299=Montana 610/680
+2302=eTrex 20x/30x China OPM & TWN
+2316=eTrex 20x/30x JPN (Japanese edition)
+2332=Epix JPN (Japanese edition)
+2442=Astro430/Alpha50
+2444=Rino 7xx
+2479=GPSMAP 276Cx
+2512=Oregon 7xx
+2530=Edge 820
+2531=Edge Explore 820
+2561=DriveSmart 50 APAC
+2563=eTrex Touch 35 APAC
+2586=Drive and DriveSmart 51
+2587=Drive 61
+2588=DriveSmart 61
+2589=DriveLuxe 51
+2590=DriveAssist 51
+2596=DriveAssist 50 APAC
+2599=Edge 820 China
+2600=Edge 820 Japan
+2604=fenix 5X
+2614=GPSMAP 64sc
+2628=Edge 820 Taiwan
+2629=Edge 820 Korea
+2630=Edge 820 SEA
+2681=Oregon 7xx APAC
+2713=Edge 1030
+2798=Fenix 5X APAC
+2803=Drive 51, APAC
+2819=D2 Charlie
+2924=Edge1030 APAC
+2956=Alpha 50 CHN
+
+[SearchPatterns]
+Base01=(89 18 89 6a 00 29 ..) d1 ((?:05|09) 99 00 29 .{1,2500} 80 6a) .. .. .. .. (?:0b|0f) 99 (00 29 03 d1) (..) (20 .. .. .. .. (?:49|48|40) e0 00 28 03 d1 \4 20 .{1,100} 89 18 49 68 88 42 07) d0
+Base02=(40 18 80 6a 00 28 ..) d1 ((?:11|1d) 98 .{1,2500} 80 6a) .. .. .. .. (?:17|23) 99 (00 29 03 d1) (..) (20 .. .. .. .. 56 e0 00 28 03 d1 \4 20 .{1,100} (?:ea|e2) 68 89 18 49 68 88 42 07) d0
+; GPSMAP, ver 3.10-3.40                                           
+Base03=(40 18 80 6a 00 28 ..) d1 (10 98 .{1,2500} 80 6a) .. .. .. .. (04 1c 2e a8 .. .. .. ..) 16 98 (00 28 03 d1) (..) (20 .. .. .. .. 56 e0 00 2c 03 d1 \5 20 .{1,100} (?:ea|e2) 68 89 18 49 68 88 42 07) d0
+; Montana, ver 2.40-2.60
+Base04=(08 18 80 6a 00 28 ..) d1 (10 98 .{1,2500} 80 6a) .. .. .. .. 00 2d .. d0 00 28 .. d0 (.{1,100} e2 68 59 43 89 18 49 68 88 42 03) d0
+; Montana, ver 2.70-4.02,  Rino, ver 2.60
+Base05=((?:40|08) 18 80 6a 00 28 ..) d1 ((?:11|10) 98 .{1,2500} 80 6a) .. .. .. .. (06 46 (?:2f|2e) a8 .. .. .. ..) 00 (?:2d|2c) .. d0 00 2e .. d0 (.{1,100} 59 43 89 18 49 68 88 42 03) d0
+; Edge 20/30, ver 2.20
+Base06=(40 18 80 6a 00 28 ..) d1 (11 98 .{1,2500} 80 6a 30 99 33 00) .. .. .. .. (06 00 2f a8 .. .. .. ..) 00 2d .. d0 00 2e .. d0 (.{1,100} 59 43 e2 68 89 18 49 68 88 42 03) d0
+; Montana 4.60, GPSMAP sc 3.30
+Base07=(00 19 80 6a 00 28 ..) d1 ((?:11|10) 98 .{1,2500} 80 6a(?: 2f 99 3b 00)?) .. .. .. .. (07 (?:46|00) 2e a8 .. .. .. ..) 00 2d .. d0 00 2f .. d0 (.{1,100} 59 43 09 19 49 68 88 42 03) d0
+; GPSMAP 4.50
+Base08=(00 19 80 6a 00 28 ..) d1 ((?:11|10) 98 .{1,2500} 80 6a) .. .. .. .. (05 1c 30 a8 .. .. .. .. 17 98) 00 28 03 d1 (.. .. .. .. .. .. .. ..) 00 2d 03 d1 (.{1,100} 59 43 09 19 49 68 88 42 07) d0
+; Oregon 600, ver 1.50,2.00
+Base09=(28 00 90 E5 00 00 50 E3 65 00 00) 1A (.{1,2700} 28 00 90 E5) .. .. .. FA 00 70 A0 E1 (.{1,180} 04 00 90 E5) .. .. .. FA (00 00 50 E3)
+; GPSMAP 64 2.50,2.60
+Base10=(28 10 90 E5 00 00 51 E3 67 00 00) 1A (.{1,2700} 28 00 90 E5) .. .. .. FA 00 60 A0 E1 (.{1,180} 04 00 90 E5) .. .. .. FA (00 00 50 E3)
+; Edge Touring 2.60, 2.70
+Base11=(00 19 80 6a 00 28 ..) d1 (2a 98 .{1,2500} 80 6a 39 00 12 AB .. .. .. .. 07 00 27 A8 .. .. .. ..) 00 2E .. d0 (00 2f .. d0 68 68 .. .. .. .. 58 43 00 19 40 68 .. .. .. .. 00 28) 1f d0
+; Monterra
+Base12=(0. fb 03 43) 9d 6a (00 2d .{1,2500} 80 6a 00 97 .. .. .. ..) 07 46 (1. a8 .. .. .. ..) d. 45 (.. .. .. .. 00 2f .{1,150} 13 b9 01 30) .. .. .. .. (.. 4d 40 F2)
+; Edge 1000, 2.20,2.30
+Base13=(00 19 81 6a 00 29 ..) d1 (29 98 .{1,2500} 80 6a) .. .. .. .. (06 46 26 a8 .{1,180} 00 19 40 68) .. .. .. .. (00 28)
+; GPSMAP 62, 5.70,5.80
+Base14=(a0 6a 00 28 ..) d1 (1. 98 .{1,2500} 8. 42 00 d0) 00 (2. 21 91 a0 6a .{1,250} a0 6a .. .. .. ..) 05 1c (3. a8 .{1,200} 61 68 88 42 ..) d0
+; Etrex, 4.00,4.10,  Astro, 3.90,4.00,  Alpha, 4.20,  Rino, 4.10
+Base15=(a0 6a 00 28 ..) d1 (1. 98 .{1,2500} 8. 42 00 d0) 00 (2. a0 6a .{1,250} a0 6a .. .. .. .. .. .. .. .. .. ..) 06 (?:00|46) (3. a8 .{1,200} 61 68 88 42 ..) d0
+; Oregon 600, 4.30,4.30,  GPSMAP 64, 3.20,  Oregon 700
+Base16=(28 00 9. E5 00 00 50 E3 .. 00 00) 1A (.{1,3700} 28 00 9. E5 .. .. .. E. .. .. .. E. .. .. .. E.) .. .. .. F(?:A|B) 00 60 A0 E1 (.{1,180} 04 00 9. E5) .. .. .. FA (00 00 50 E3)
+; Edge 1000, ver 2.70
+Base17=(a0 6a 00 28 ..) d1 (36 98 .{1,2500} 8. 42 00 d0) 00 (2. a0 6a .{1,250} a0 6a .. .. .. .. .. .. .. .. .. ..) 06 (?:00|46) (3. a8 .{1,200} 60 68 .. .. .. .. 00) 28 (F7 D0)
+; Epix, ver 1.85-2.70
+Base18=(a0 6a 00 28) .. d0 (4f f0 ff 30 .{1,400} 0c bf 01 25) 00 (25 28 21 .{1,250} 39 46 a0 6a) .. .. .. .. (06 46 .{1,100} 60 68) .. .. .. .. (00 28)
+; Edge 520
+Base19=(04 EB 80 00) 81 6A (00 29 00 F0 0C 81 4F F0 FF 31 .{1,1000} 82 42 0C BF 01 26) 00 (26 .{1,400} 80 6A 2A 46 39 46) .. .. .. F. (05 46 .{1,200} 40 68) .. .. .. F. (00 28)
+; Drive 60, 61, RV/Camper
+Base20=(A0 6A 00 28) .. D0 (4F F0 .{1,400} 61 6A 81 42 0C BF 01 20) 00 (20 00 28 .. .. .. AF 01 98 21 46) .. .. .. F. (00 28 .. .. .. AF 60 68) .. .. .. F. (00 28)
+; Oregon 700, 2.80
+Base21=(28 00 9. E5 00 00 50 E3 .. 00 00) 1A (.{1,3700} 24 .0 9. E5 00 00 51 E1) 00 (00 A0 13 01 00 A0 03 00 00 50 E3 .. .. .. .. .. .. .. E5 .. .. .. E1) .. .. .. F. (00 00 50 E3 .. .. .. .. .. .. .. E5) .. .. .. F. (00 00 50 E3)
+
+[ReplacePatterns]
+Base01=$1 e0 $2 01 20 01 20 01 21 $3 $4 $5 e0
+Base02=$1 e0 $2 01 20 01 20 01 21 $3 $4 $5 e0
+Base03=$1 e0 $2 01 20 01 20 $3 01 20 $4 $5 $6 e0
+Base04=$1 e0 $2 01 20 01 20 01 20 01 20 01 20 01 20 $3 e0
+Base05=$1 e0 $2 01 20 01 20 $3 01 20 01 20 01 20 01 20 $4 e0
+Base06=$1 e0 $2 01 20 01 20 $3 01 20 01 20 01 20 01 20 $4 e0
+Base07=$1 e0 $2 01 20 01 20 $3 01 20 01 20 01 20 01 20 $4 e0
+Base08=$1 e0 $2 01 20 01 20 $3 01 20 03 e0 $4 01 20 03 e0 $5 e0
+Base09=$1 ea $2 01 70 a0 e3 01 50 a0 e3 $3 01 00 a0 e3 $4
+Base10=$1 ea $2 01 60 a0 e3 01 50 a0 e3 $3 01 00 a0 e3 $4
+Base11=$1 e0 $2 01 26 01 27 $3 01 20
+Base12=$1 01 25 $2 01 27 $3 01 2f $4 af f3 00 80 $5
+Base13=$1 e0 $2 01 20 01 25 $3 01 20 01 20 $4
+Base14=$1 e0 $2 01 $3 01 25 $4 e0
+Base15=$1 e0 $2 01 $3 01 26 $4 e0
+Base16=$1 ea $2 01 60 a0 e3 01 50 a0 e3 $3 01 00 a0 e3 $4
+Base17=$1 e0 $2 01 $3 01 26 $4 2e $5
+Base18=$1 c0 46 $2 01 $3 01 20 01 20 $4 01 20 01 20 $5
+Base19=$1 01 21 $2 01 $3 01 20 01 20 $4 01 20 01 20 $5
+Base20=$1 C0 46 $2 01 $3 01 20 01 20 $4 01 20 01 20 $5
+Base21=$1 ea $2 01 $3 01 00 a0 e3 $4 01 00 a0 e3 $5
+[General]
+DefinesDate=2019-05-02
+
+[HWIDs]
+1142=Oregon 550 Thai
+1301=GPSMAP 62SJ JPN (Japanese edition)
+1353=GPSMAP 62S KOR (Korean edition)
+1354=GPSMAP 62S/78S Thai/Indonesia edition
+1429=Montana 650t TWN (Taiwan edition)
+1431=Montana KOR (Korean edition)
+1497=Edge 800 KOR (Korean edition)
+1498=eTrex 20/30 SEA (South East Asia edition)
+1532=GPSMAP 62sc CHN (Chinese edition)
+1533=GPSMAP 62sc JPN (Japanese edition)
+1536=Oregon 550tc JPN (Japanese edition)
+1556=eTrex 20/30 CHN (Chinese edition)
+1561=Edge 510
+1587=Rino 6xx CHN (Chinese edition)
+1594=eTrex 20/30 TWN (Taiwan edition)
+1635=Montana 650t CHN (Chinese edition)
+1721=Edge 810 JPN (Japanese edition)
+1741=eTrex 20S SG
+1742=Edge 510 JPN (Japanese edition)
+1820=eTrex 209/309 China
+1822=Edge 810 CHN (Chinese edition)
+1823=Edge 810 TWN (Taiwan edition)
+1836=Edge 1000
+1843=Oregon 6xx SEA (South East Asia edition)
+1857=Oregon 6xx JPN (Japanese edition)
+1859=GPSMAP 64
+1876=Rino 6xx KOR (Korean edition)
+1918=Edge 510 KOR (Korean edition)
+1988=Epix System
+2052=Edge 1000 TWN (Taiwan edition)
+2053=Edge 1000 JPN (Japanese edition)
+2067=Edge 520
+2070=Edge 1000 CHN (Chinese edition)
+2100=Edge 1000 KOR (Korean edition)
+2123=GPSMAP 64S SEA (South East Asia edition)
+2124=GPSMAP 64SJ JPN (Japanese edition)
+2140=eTrex Touch 25/35
+2204=Edge Explore 1000
+2231=Oregon 650TCJ2 JPN (Japanese edition)
+2250=eTrex 20x/30x
+2260=Edge 520 Asia
+2261=Edge 520 Japan
+2267=Drive and DriveSmart 40/50
+2268=Drive, DriveSmart 60/70, and DriveTrack 70
+2269=DriveLuxe 50
+2270=DriveAssist 50
+2274=Edge 1000 Thai
+2281=GPSMAP 64s KOR
+2285=GPSMAP 64st TWN
+2299=Montana 610/680
+2302=eTrex 20x/30x China OPM & TWN
+2316=eTrex 20x/30x JPN (Japanese edition)
+2332=Epix JPN (Japanese edition)
+2442=Astro430/Alpha50
+2444=Rino 7xx
+2479=GPSMAP 276Cx
+2512=Oregon 7xx
+2530=Edge 820
+2531=Edge Explore 820
+2561=DriveSmart 50 APAC
+2563=eTrex Touch 35 APAC
+2586=Drive and DriveSmart 51
+2587=Drive 61
+2588=DriveSmart 61
+2589=DriveLuxe 51
+2590=DriveAssist 51
+2596=DriveAssist 50 APAC
+2599=Edge 820 China
+2600=Edge 820 Japan
+2604=fenix 5X
+2614=GPSMAP 64sc
+2628=Edge 820 Taiwan
+2629=Edge 820 Korea
+2630=Edge 820 SEA
+2681=Oregon 7xx APAC
+2684=RV/Camper 770
+2705=Avtex Tourer One Plus
+2713=Edge 1030
+2763=GPSMAP 64sc JPN
+2764=GPSMAP 64sc SEA
+2798=Fenix 5X APAC
+2803=Drive 51, APAC
+2819=D2 Charlie
+2859=Descent Mk1
+2893=Atemos 50
+2894=Atemos 100
+2900=fenix 5 Plus
+2924=Edge1030 APAC
+2956=Alpha 50 CHN
+2991=Descent APAC
+2994=D2 Charlie, APAC
+2996=DriveSmart 61, APAC
+2997=eTrex 302 CHN
+3028=GPSMAP 66
+3011=Edge Explore
+3089=Fenix5 Plus APAC
+3095=Edge 1030 Bontrager
+3098=Astro 900
+3109=DriveAssist 51, APAC
+3110=fenix 5 Plus
+3111=fenix 5X Plus
+3112=Edge 520 Plus
+3115=GPSMAP 64sc SiteSurvey
+3134=Fenix5S Plus APAC
+3135=Fenix5X Plus APAC
+3142=Edge 520 Plus, APAC
+3187=Rino 7xx GMRS
+3196=D2 Delta
+3197=D2 Delta
+3198=D2 Delta PX
+3262=GPSMAP276Cx APAC
+3324=D2 Delta PX, Host, APAC
+
+[SearchPatterns]
+; Edge 1000, 2.20,2.30
+Added01=(00 19 81 6a 00 29 ..) d1 (29 98 .{1,2500} 80 6a) .. .. .. .. (06 46 26 a8 .{1,180} 00 19 40 68) .. .. .. .. (00 28)
+; GPSMAP 62, 5.70,5.80
+Added02=(a0 6a 00 28 ..) d1 (1. 98 .{1,2500} 8. 42 00 d0) 00 (2. 21 91 a0 6a .{1,250} a0 6a .. .. .. ..) 05 1c (3. a8 .{1,200} 61 68 88 42 ..) d0
+; Etrex, 4.00,4.10,  Astro, 3.90,4.00,  Alpha, 4.20,  Rino, 4.10
+Added03=(a0 6a 00 28 ..) d1 (1. 98 .{1,2500} 8. 42 00 d0) 00 (2. a0 6a .{1,250} a0 6a .. .. .. .. .. .. .. .. .. ..) 06 (?:00|46) (3. a8 .{1,200} 61 68 88 42 ..) d0
+; Oregon 600, 4.30,4.30,  GPSMAP 64, 3.20,  Oregon 700
+Added04=(28 00 9. E5 00 00 50 E3 .. 00 00) 1A (.{1,3700} 28 00 9. E5 .. .. .. E. .. .. .. E. .. .. .. E.) .. .. .. F(?:A|B) 00 60 A0 E1 (.{1,180} 04 00 9. E5) .. .. .. FA (00 00 50 E3)
+; Edge 520
+Added05=(04 EB 80 00) 81 6A (00 29 00 F0 0C 81 4F F0 FF 31 .{1,1000} 82 42 0C BF 01 26) 00 (26 .{1,400} 80 6A 2A 46 39 46) .. .. .. F. (05 46 .{1,200} 40 68) .. .. .. F. (00 28)
+; Monterra CHN, 1.29
+Added06=(0. fb 03 43) 9d 6a (00 2d .{1,2500} 80 6a 00 97 .. .. .. ..) 07 46 (1. a8 .. .. .. ..) d. 45 (.. .. .. .. 00 2f .{1,150} 13 b9 01 30) .. .. .. .. (.. 4d 40 F2)
+; Drive 60, 61, RV/Camper
+Added07=(A0 6A 00 28) .. D0 (4F F0 .{1,400} 61 6A 81 42 0C BF 01 20) 00 (20 00 28 .. .. .. AF 01 98 21 46) .. .. .. F. (00 28 .. .. .. AF 60 68) .. .. .. F. (00 28)
+; Oregon 700, 2.80
+Added08=(28 00 9. E5 00 00 50 E3 .. 00 00) 1A (.{1,3700} 24 .0 9. E5 00 00 51 E1) 00 (00 A0 13 01 00 A0 03 00 00 50 E3 .. .. .. .. .. .. .. E5 .. .. .. E1) .. .. .. F. (00 00 50 E3 .. .. .. .. .. .. .. E5) .. .. .. F. (00 00 50 E3)
+; Fenix 5X
+Added09=(AC 6A 00 2C) .. .. .. 80 (AB 69 .{1,400} 6B 6A 98 42) .. D1 (28 21 A8 6A .{1,400} 3A 46 41 46 23 46) .. .. .. F. (07 46 .{1,1000} 6F 68 .. .. .. F.) 87 42 (.. D.)
+; Edge 1030, 3.20
+Added10=(A0 6A 00 28) .. D0 (00 20 .{1,2500} 55 E0) 00 (2. A0 6A 28 21 .{1,250} 32 46 39 46) .. .. .. F. (06 46 .{1,100} 60 68) .. .. .. F. (00 28)
+; Fenix 5X Plus
+Added11=(AC 6A 00 2C) .. .. .. 80 (AB 69 .{1,400} 6B 6A 98 42) .. D1 (28 21 A8 6A .{1,400} .. 46 4. 46 23 46) .. .. .. F. (80 46 .{1,1200} D5 F8 04 80 .. .. .. F.) 80 45 (.. D.)
+; AvtexTourer
+Added12=(A0 6A 00 28 ..) D1 (D8 F8 .{1,1100} 61 6A 81 42 14 BF) 00 (20 01 20 00 28 .. .. .. A. .. 98 21 46) .. .. .. F. (00 28 .. .. .. A. 60 68) .. .. .. F. (00 28)
+; GPSMAP 66
+Added13=(A0 6A 00 28) .. D0 (00 20 .{1,2500} 30 E0) 00 (20 00 28 00 D1 .. .. .. 98 21 46) .. .. .. F. (00 28 .. .. 60 68) .. .. .. F. (00 28)
+; EdgeExplore 4.00, 4.10
+Added14=(A0 6A 00 28 ..) D1 (1E 98 .{1,1100} 62 6A 01 21 82 42 00 D0) 00 (21 00 29 .. D1 .. .. .. 98 21 46) .. .. .. F. (00 28 .. .. 60 68) .. .. .. F. (00 28)
+
+[ReplacePatterns]
+Added01=$1 e0 $2 01 20 01 25 $3 01 20 01 20 $4
+Added02=$1 e0 $2 01 $3 01 25 $4 e0
+Added03=$1 e0 $2 01 $3 01 26 $4 e0
+Added04=$1 ea $2 01 60 a0 e3 01 50 a0 e3 $3 01 00 a0 e3 $4
+Added05=$1 01 21 $2 01 $3 01 20 01 20 $4 01 20 01 20 $5
+Added06=$1 01 25 $2 01 27 $3 01 2f $4 af f3 00 80 $5
+Added07=$1 C0 46 $2 01 $3 01 20 01 20 $4 01 20 01 20 $5
+Added08=$1 ea $2 01 $3 01 00 a0 e3 $4 01 00 a0 e3 $5
+Added09=$1 C0 46 C0 46 $2 C0 46 $3 01 20 01 20 $4 BF 42 $5
+Added10=$1 C0 46 $2 01 $3 01 20 01 20 $4 01 20 01 20 $5
+Added11=$1 C0 46 C0 46 $2 C0 46 $3 01 20 01 20 $4 00 45 $5
+Added12=$1 E0 $2 01 $3 01 20 01 20 $4 01 20 01 20 $5
+Added13=$1 C0 46 $2 01 $3 01 20 01 20 $4 01 20 01 20 $5
+Added14=$1 E0 $2 01 $3 01 20 01 20 $4 01 20 01 20 $5
