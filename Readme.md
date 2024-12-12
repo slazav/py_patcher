@@ -71,7 +71,7 @@ GPSMAP62_78_730                     OK  +  Base14   +
 GPSMAP62sc_62stc_WebUpdater__530    OK  +  Base15   +
 GPSMAP64sx_WebUpdater__310          OK  +  Base16   +
 GPSMAP64_WebUpdater__660            OK  +  Base16   +
-GPSMAP66_WebUpdater__960            OK  +  - (!!)
+GPSMAP66_WebUpdater__960            OK  +  Added13  +
 Montana610_680_350                  OK  +  Base15   +
 Montana_WebUpdater__760             OK  +  Base15   +
 NordicRino650_WebUpdater__270       OK  +  Base05   +
