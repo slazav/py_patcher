@@ -37,7 +37,7 @@ py_patcher [-F <patch_file> ] [-p <patch_name>] [--no_cs] [--force] <in file> [<
 ```
 
 Script reads `<in file>` and verifies checksum (unless `--no_cs` is given).
-If checksum verivication fails the script stops (unless `--force` option is given).
+If checksum verification fails the script stops (unless `--force` option is given).
 If `-F <patch_file>` option is given then patches are read and applied to the data.
 With `-p <patch_name>` option one can select a specific patch.
 If `<out_file>` is given and at least one patch can be applied then result is
@@ -86,7 +86,7 @@ CS -- checksum calculation with patcher.py in the original file
 P1 -- patchable with original FirmwarePatcher.exe
 PN -- patch name which matches the file
 PN -- patch name detected by patcher.py
-CMP -- compare pathed files produced by FirmwarePatcher.exe
+CMP -- compare patched files produced by FirmwarePatcher.exe
       (no name and version change) and patcher.py
 ```
 
