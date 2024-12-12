@@ -168,7 +168,7 @@ if args.out_file and lastmatch:
   print('## Do patching with', key, ', writing file:', args.out_file)
 
   data1 = bytes.fromhex(\
-    re.sub(patt[key]["spatt"], patt[key]["rpatt"], data, re.IGNORECASE))
+    re.sub(patt[key]["spatt"], patt[key]["rpatt"], data, flags=re.IGNORECASE))
 
   fo = open(args.out_file, mode="wb")
   fo.write(data1)
